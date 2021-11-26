@@ -1,7 +1,9 @@
 from logging.config import dictConfig
 import logging
+import sys
 
-
+stdout=open('debug.log', mode='a')
+stderr=open('debug.log', mode='a')
 class LibraryError(Exception):
     pass
 
@@ -19,7 +21,7 @@ dictConfig({
     },
     'handlers': {
         'file': {
-            'level': 'DEBUG',
+            'level': 'INFO',
             'class': 'logging.FileHandler',
             'filename': 'debug.log',
             'formatter': 'default',
@@ -33,7 +35,7 @@ dictConfig({
 
 
 def command(commands, *args, **kwargs):
-    logging.debug(commands.__name__ + ' started with args:' + str(args), ' with kwargs: ' + str(kwargs))
+    logging.info(commands.__name__ + ' started with args:' + str(args), ' with kwargs: ' + str(kwargs))
     try:
         return commands(*args, **kwargs)
     except LibraryMessage as m:

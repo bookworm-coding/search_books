@@ -22,7 +22,6 @@ def add():
     def next_com(*args):
         global entry, window, entry, t2, entry2
         data1 = entry.get()
-        window.destroy()
         window = Tk()
         entry2 = Entry(window, font=('Malgun Gothic', 20, "roman"))
         entry2.grid(row=0, column=1)
@@ -32,8 +31,8 @@ def add():
         def next_com_com(*args):
             global window, data1, data2, t, entry
             data2 = entry2.get()
-            window.destroy()
             com(functions.add, isbn=entry.get(), d=entry2.get())
+            window.destroy()
 
         window.bind("<Return>", next_com_com)
 
