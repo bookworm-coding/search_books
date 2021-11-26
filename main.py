@@ -1,8 +1,9 @@
 from tkinter import *
+
+import log
 import scan
 import functions
 from log import command as com
-
 root: Tk = None
 window: Tk = None
 entry: Entry = None

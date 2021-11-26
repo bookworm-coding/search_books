@@ -2,8 +2,6 @@ from logging.config import dictConfig
 import logging
 import sys
 
-stdout=open('debug.log', mode='a')
-stderr=open('debug.log', mode='a')
 class LibraryError(Exception):
     pass
 
@@ -28,7 +26,7 @@ dictConfig({
         },
     },
     'root': {
-        'level': 'DEBUG',
+        'level': 'INFO',
         'handlers': ['file']
     }
 })
