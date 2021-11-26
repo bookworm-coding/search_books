@@ -19,21 +19,21 @@ def add():
     data1 = None
     data2 = None
 
-    def next_com():
-        global entry, window, entry, t2
+    def next_com(*args):
+        global entry, window, entry, t2, entry2
         data1 = entry.get()
         window.destroy()
         window = Tk()
-        entry = Entry(window, font=('Malgun Gothic', 20, "roman"))
-        entry.grid(row=0, column=1)
+        entry2 = Entry(window, font=('Malgun Gothic', 20, "roman"))
+        entry2.grid(row=0, column=1)
         t2 = Label(window, text="위치 코드를 입력하거나 스캔하세요", font=('Malgun Gothic', 20, "roman"))
         t2.grid(row=0, column=0)
 
-        def next_com_com():
+        def next_com_com(*args):
             global window, data1, data2, t, entry
-            data2 = entry.get()
+            data2 = entry2.get()
             window.destroy()
-            com(functions.add, isbn=data1, d=data2)
+            com(functions.add, isbn=entry.get(), d=entry2.get())
 
         window.bind("<Return>", next_com_com)
 

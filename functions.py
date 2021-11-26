@@ -18,7 +18,7 @@ def search(query):
     return result
 
 
-def add(isbn=0, d=''):
+def add(isbn='', d=''):
     data = com(open_api.isbn, isbn)
     data['위치'] = d
     com(books_csv.add_to_csv, data)
