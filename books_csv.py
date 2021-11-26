@@ -43,4 +43,4 @@ def delete_to_csv(n):
 
 
 if __name__ == "__main__":
-    add_to_csv(functions.show(isbn=9788937853470))
+    print(get_from_csv())
