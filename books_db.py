@@ -10,3 +10,10 @@ def get(column='*', where=''):
     conn.close()
     return a
 def insert(isbn, place, title):
+    conn=connect('books.db')
+    c = conn.cursor()
+    c.execute("INSERT INTO books VALUES (:isbn, :place, :title)",
+              {"isbn": isbn, "place":place, "title":title})
+    conn.commit()
+    conn.close()
+    return
