@@ -2,6 +2,7 @@ from logging.config import dictConfig
 import logging
 import sys
 
+
 class LibraryError(Exception):
     pass
 
@@ -33,18 +34,20 @@ dictConfig({
 
 
 def command(commands, *args, **kwargs):
-    logging.info(commands.__name__ + ' started with args:' + str(args), ' with kwargs: ' + str(kwargs))
+    logging.info(str(commands.__name__) + ' started with args:' + str(args), ' with kwargs: ' + str(kwargs))
     try:
         return commands(*args, **kwargs)
     except LibraryMessage as m:
         logging.info(m)
         return m
     except LibraryError as e:
-        logging.error(e)
-        raise e
+        logging.info(str(e) + ' 오류가 발생하였습니다.')
     except Exception as er:
         try:
             raise LibraryError(er)
         except LibraryError as e:
-            logging.error(e)
-            raise LibraryError(e)
+            logging.info(str(e) + ' 오류가 발생하였습니다.')
+
+
+if __name__ == "__main__":
+    logging.info('hello')
