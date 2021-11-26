@@ -5,8 +5,8 @@ from log import command as com
 
 root: Tk = None
 window: Tk = None
-entry = None
-entry2 = None
+entry: Entry = None
+entry2: Entry = None
 
 
 def add():
@@ -19,7 +19,7 @@ def add():
     data1 = None
     data2 = None
 
-    def next_com(*args):
+    def next_com():
         global entry, window, entry, t2
         data1 = entry.get()
         window.destroy()
@@ -29,7 +29,7 @@ def add():
         t2 = Label(window, text="위치 코드를 입력하거나 스캔하세요", font=('Malgun Gothic', 20, "roman"))
         t2.grid(row=0, column=0)
 
-        def next_com_com(*args):
+        def next_com_com():
             global window, data1, data2, t, entry
             data2 = entry.get()
             window.destroy()
@@ -41,7 +41,7 @@ def add():
 
 
 def start():
-    global root, window, entry
+    global root, window, entry, a
     try:
         window.destroy()
     except:
