@@ -3,9 +3,16 @@ import books_csv
 import urllib.request
 from log import LibraryError, LibraryMessage
 from log import command as com
+import books_db
 
-
-def search(query):
+def search_db(query):
+    result:list=[]
+    data=books_db.get()
+    for i in data:
+        if query in i[2]:
+            result.append(i)
+    return result
+def search_csv(query):
     result = []
     a = 0
     for i in com(books_csv.get_from_csv):
@@ -18,15 +25,19 @@ def search(query):
     return result
 
 
-def add(isbn='', d=''):
+def add_db(isbn='', place=''):
+    com(books_db.insert, isbn, place, com(open_api.isbn, isbn))
+
+
+def add_csv(isbn='', d=''):
     data = com(open_api.isbn, isbn)
     data['위치'] = d
     com(books_csv.add_to_csv, data)
     return data
 
 
-def delete(query):
-    com(books_csv.delete_to_csv, com(search(query)))
+def delete_csv(query):
+    com(books_csv.delete_to_csv, com(search_csv(query)))
     return
 
 
@@ -47,6 +58,7 @@ def find_from_csv(query):
 
 
 def change(dictionary):
+    """
     change_value = {"TITLE": "제목", "VOL": "권차", "SERIES_TITLE": "시리즈명", "AUTHOR": "저자", "EA_ISBN": "ISBN",
                     "EA_ADD_CODE": "ISBN 부가기호", "SET_ISBN": "세트 ISBN", "SET_ADD_CODE": "세트 ISBN 부가기호",
                     "SET_EXPRESSION": "세트 표현", "PUBLISHER": "출판사", "EDITION_STMT": "판사항", "REAL_PRICE": "정가",
@@ -63,4 +75,5 @@ def change(dictionary):
             j = k
         dictionary[change_value[i]] = j
         del dictionary[i]
-    return dictionary
+    """
+    return dictionary["ISBN"]

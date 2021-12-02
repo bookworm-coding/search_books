@@ -1,0 +1,5 @@
+[2021-12-02 15:43:28,798] add_db() got an unexpected keyword argument 'd' 오류가 발생하였습니다.
+[2021-12-02 15:43:43,397] tuple index out of range 오류가 발생하였습니다.
+[2021-12-02 15:44:45,545] tuple index out of range 오류가 발생하였습니다.
+[2021-12-02 15:45:44,691] tuple index out of range 오류가 발생하였습니다.
+[2021-12-02 15:47:43,797] add_db() got an unexpected keyword argument 'd' 오류가 발생하였습니다.

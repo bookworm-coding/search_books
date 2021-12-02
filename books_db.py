@@ -24,4 +24,4 @@ def insert(isbn, place, title):
 
 
 if __name__ == "__main__":
-    insert(0, 0, 0)
+    print(get())
