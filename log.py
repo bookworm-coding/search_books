@@ -34,20 +34,7 @@ dictConfig({
 
 
 def command(commands, *args, **kwargs):
-    logging.info(str(commands.__name__) + ' started with args:' + str(args), ' with kwargs: ' + str(kwargs))
-    try:
-        return commands(*args, **kwargs)
-    except LibraryMessage as m:
-        logging.info(m)
-        return m
-    except LibraryError as e:
-        logging.info(str(e) + ' 오류가 발생하였습니다.')
-    except Exception as er:
-        try:
-            raise LibraryError(er)
-        except LibraryError as e:
-            logging.info(str(e) + ' 오류가 발생하였습니다.')
-
+    return commands(*args, **kwargs)
 
 if __name__ == "__main__":
     logging.info('hello')

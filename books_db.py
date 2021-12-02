@@ -18,7 +18,7 @@ def insert(isbn, place, title):
     c = conn.cursor()
     c.execute("INSERT INTO books VALUES (:isbn, :place, :title)",
               {"isbn": isbn, "place": place, "title": title})
-    c.commit()
+
     conn.commit()
     conn.close()
     return

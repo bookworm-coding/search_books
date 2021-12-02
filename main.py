@@ -24,6 +24,7 @@ def find():
         data = entry.get()
         window.destroy()
         search: list = functions.search_db(data)
+        print(search)
         if search == [] or search == None:
             window = Tk()
             l = Label(window, text="찾으려는 책이 없습니다.")
@@ -32,7 +33,7 @@ def find():
         else:
             window = Tk()
 
-            for i, j in search, range(0, len(search)):
+            for i in search:
                 l = Label(window, text=str(i[2]) + "라는 책이 " + str(i[1]) + "에 있습니다.")
                 l.pack()
             window.mainloop()
@@ -62,7 +63,7 @@ def add():
         def next_com_com(*args):
             global window, data1, data2, t, entry
             data2 = entry2.get()
-            com(functions.add_db, isbn=entry.get(), d=entry2.get())
+            functions.add_db(isbn=entry.get(), place=entry2.get())
             window.destroy()
 
         window.bind("<Return>", next_com_com)

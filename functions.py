@@ -76,4 +76,4 @@ def change(dictionary):
         dictionary[change_value[i]] = j
         del dictionary[i]
     """
-    return dictionary["ISBN"]
+    return dictionary["TITLE"]
