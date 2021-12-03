@@ -26,7 +26,7 @@ def search_csv(query):
 
 
 def add_db(isbn='', place=''):
-    com(books_db.insert, isbn, place, com(open_api.isbn, isbn))
+    com(books_db.insert, isbn, place, open_api.isbn(isbn))
 
 
 def add_csv(isbn='', d=''):

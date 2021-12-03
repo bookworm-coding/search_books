@@ -9,7 +9,8 @@ root: Tk = None
 window: Tk = None
 entry: Entry = None
 entry2: Entry = None
-
+data1: str=""
+data2: str=""
 
 def find():
     global window, root, entry, entry2
@@ -61,7 +62,7 @@ def add():
         def next_com_com(*args):
             global window, data1, data2, t, entry
             data2 = entry2.get()
-            functions.add_db(isbn=entry.get(), place=entry2.get())
+            functions.add_db(isbn=data1, place=data2)
             showinfo("도서 등록 완료", "신규 도서 등록이 완료되었습니다.")
             window.destroy()
 

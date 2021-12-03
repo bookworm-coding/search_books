@@ -19,11 +19,11 @@ def isbn(isbn_number):
         if not json.loads(response_body.decode())['docs']:
             return "no_isbn"
         print(json.loads(response_body.decode())['docs'][0])
-        return functions.change(json.loads(response_body.decode())['docs'][0])
+        return json.loads(response_body.decode())['docs'][0]['TITLE']
     else:
         print(rescode)
         return "error"
 
 
 if __name__ == "__main__":
-    print(isbn(9791190092043))
+    print(isbn(9788931455403))
