@@ -23,7 +23,7 @@ def insert(isbn, place, title):
     conn.close()
     return
 def reset():
-    if askyesno("도서 목록 초기화", "도서 목록 초기화 하시겠습니까?")=="yes":
+    if askyesno("도서 목록 초기화", "도서 목록 초기화 하시겠습니까?"):
         showinfo("도서 목록 초기화 완료", "도서 목록 초기화 완료됨")
         conn = connect('books.db')
         c = conn.cursor()

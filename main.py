@@ -1,11 +1,7 @@
 from tkinter import *
 from tkinter.messagebox import showinfo
-
 import books_db
-import log
-import scan
 import functions
-from log import command as com
 import open_api
 root: Tk = None
 window: Tk = None
