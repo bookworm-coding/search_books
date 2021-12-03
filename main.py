@@ -16,7 +16,7 @@ def find():
     window = Tk()
     entry = Entry(window, font=('Malgun Gothic', 20, "roman"))
     entry.grid(row=0, column=1)
-    l = Label(window, text="찾으려는 책의 제목을 입력하세요.")
+    l = Label(window, text="찾으려는 책의 제목을 입력하세요.", font=('Malgun Gothic', 20, "roman"))
     l.grid(row=0, column=0)
 
     def next_com(*args, **kwargs):
@@ -27,14 +27,14 @@ def find():
         print(search)
         if search == [] or search == None:
             window = Tk()
-            l = Label(window, text="찾으려는 책이 없습니다.")
+            l = Label(window, text="찾으려는 책이 없습니다.", font=('Malgun Gothic', 20, "roman"))
             l.pack()
             window.mainloop()
         else:
             window = Tk()
 
             for i in search:
-                l = Label(window, text=str(i[2]) + "라는 책이 " + str(i[1]) + "에 있습니다.")
+                l = Label(window, text=str(i[2]) + "라는 책이 " + str(i[1]) + "에 있습니다.", font=('Malgun Gothic', 20, "roman"))
                 l.pack()
             window.mainloop()
 
