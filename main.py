@@ -50,7 +50,7 @@ def add():
     data2 = None
 
     def next_com(*args):
-        global entry, window, entry, t2, entry2
+        global entry, window, entry, t2, entry2, data1, data2
         data1 = entry.get()
         window.destroy()
         window = Tk()
@@ -98,12 +98,16 @@ if __name__ == "__main__":
         pass
     root = Tk()
     root.title("도서 검색 프로그램")
-    a = Button(root, text="신규 등록", command=add, font=('Malgun Gothic', 20, "roman"))
-    a.grid(row=0, column=1)
+    a=Label(root, text="도서검색 프로그램 v1.0", font=('Malgun Gothic', 20, "roman"), width=20)
+    a.pack(side="top")
+    frame = Frame(root)
+    frame.pack(side="bottom")
+    a = Button(frame, text="신규 등록", command=add, font=('Malgun Gothic', 20, "roman"), width=10)
+    a.pack(side="left")
     # a = Button(root, text="기존 책 뽑기"""", command=out""", font=('Malgun Gothic', 20, "roman"))
     # a.grid(row=0, column=2)
     # a = Button(root, text="기존 책 꼽기"""", command=into""", font=('Malgun Gothic', 20, "roman"))
     # a.grid(row=0, column=3)
-    a = Button(root, text="책 검색", command=find, font=('Malgun Gothic', 20, "roman"))
-    a.grid(row=0, column=4)
+    a = Button(frame, text="책 검색", command=find, font=('Malgun Gothic', 20, "roman"), width=10)
+    a.pack(side="right")
     root.mainloop()
