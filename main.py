@@ -1,5 +1,7 @@
 from tkinter import *
 from tkinter.messagebox import showinfo
+
+import books_db
 import log
 import scan
 import functions
@@ -103,11 +105,13 @@ if __name__ == "__main__":
     frame = Frame(root)
     frame.pack(side="bottom")
     a = Button(frame, text="신규 등록", command=add, font=('Malgun Gothic', 20, "roman"), width=10)
-    a.pack(side="left")
+    a.grid(row=0, column=0)
     # a = Button(root, text="기존 책 뽑기"""", command=out""", font=('Malgun Gothic', 20, "roman"))
     # a.grid(row=0, column=2)
     # a = Button(root, text="기존 책 꼽기"""", command=into""", font=('Malgun Gothic', 20, "roman"))
     # a.grid(row=0, column=3)
     a = Button(frame, text="책 검색", command=find, font=('Malgun Gothic', 20, "roman"), width=10)
-    a.pack(side="right")
+    a.grid(row=0, column=1)
+    a=Button(frame, text="도서 목록 초기화", command=books_db.reset, font=('Malgun Gothic', 20, "roman"))
+    a.grid(row=0, column=2)
     root.mainloop()
