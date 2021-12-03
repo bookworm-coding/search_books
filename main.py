@@ -4,7 +4,7 @@ import log
 import scan
 import functions
 from log import command as com
-
+import open_api
 root: Tk = None
 window: Tk = None
 entry: Entry = None
@@ -63,7 +63,7 @@ def add():
             global window, data1, data2, t, entry
             data2 = entry2.get()
             functions.add_db(isbn=data1, place=data2)
-            showinfo("도서 등록 완료", "신규 도서 등록이 완료되었습니다.")
+            showinfo(open_api.isbn(data1)+"도서 등록 완료", open_api.isbn(data1)+" 도서 등록이 완료되었습니다.")
             window.destroy()
 
         window.bind("<Return>", next_com_com)
