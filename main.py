@@ -18,7 +18,7 @@ def find():
     entry.grid(row=0, column=1)
     l = Label(window, text="찾으려는 책의 제목을 입력하세요.", font=('Malgun Gothic', 20, "roman"))
     l.grid(row=0, column=0)
-
+    window.title('도서 검색')
     def next_com(*args, **kwargs):
         global window
         data = entry.get()
@@ -26,19 +26,15 @@ def find():
         search: list = functions.search_db(data)
         print(search)
         if search == [] or search == None:
-            window = Tk()
-            l = Label(window, text="찾으려는 책이 없습니다.", font=('Malgun Gothic', 20, "roman"))
-            l.pack()
-            window.mainloop()
+            showinfo("존재하지 않는 책", "찾으시려는 책이 없습니다.")
         else:
-            window = Tk()
-
+            text=""
             for i in search:
-                l = Label(window, text=str(i[2]) + "라는 책이 " + str(i[1]) + "에 있습니다.", font=('Malgun Gothic', 20, "roman"))
-                l.pack()
-            window.mainloop()
+               text+=str(i[2]) + "라는 책이 " + str(i[1]) + "에 있습니다.\n"
+            showinfo("책 찾음", text)
 
     window.bind("<Return>", next_com)
+    window.mainloop()
 
 
 def add():
@@ -71,8 +67,8 @@ def add():
             window.destroy()
 
         window.bind("<Return>", next_com_com)
-    window.mainloop()
     window.bind("<Return>", next_com)
+    window.mainloop()
 
 
 def start():
