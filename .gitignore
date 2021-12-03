@@ -3,4 +3,4 @@
 /venv/
 /.idea/
 /package/
-*.png
+.png
