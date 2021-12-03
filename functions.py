@@ -1,8 +1,6 @@
 import open_api
 import books_csv
 import urllib.request
-from log import LibraryError, LibraryMessage
-from log import command as com
 import books_db
 
 def search_db(query):
@@ -15,42 +13,38 @@ def search_db(query):
 def search_csv(query):
     result = []
     a = 0
-    for i in com(books_csv.get_from_csv):
+    for i in books_csv.get_from_csv():
         for j in dict.keys(i):
             if query in i[j]:
                 result.append(a)
         a += 1
-    if not result:
-        raise LibraryMessage('없는 책 입니다.')
     return result
 
 
 def add_db(isbn='', place=''):
-    com(books_db.insert, isbn, place, open_api.isbn(isbn))
+    books_db.insert(isbn, place, open_api.isbn(isbn))
 
 
 def add_csv(isbn='', d=''):
-    data = com(open_api.isbn, isbn)
+    data = open_api.isbn(isbn)
     data['위치'] = d
-    com(books_csv.add_to_csv, data)
+    books_csv.add_to_csv(data)
     return data
 
 
 def delete_csv(query):
-    com(books_csv.delete_to_csv, com(search_csv(query)))
+    books_csv.delete_to_csv(search_csv(query))
     return
 
 
 def show(isbn=0):
     if isbn != 0:
-        return com(open_api.isbn, isbn)
-    else:
-        raise LibraryError('ISBN 값이 없습니다.')
+        return open_api.isbn(isbn)
 
 
 def find_from_csv(query):
-    get = com(books_csv.get_from_csv)
-    num = com(search, query)
+    get = books_csv.get_from_csv()
+    num = search_csv(query)
     result = []
     for i in num:
         result.append(get[i])

@@ -1,16 +1,14 @@
 import cv2
 from barcode import Code128
 from barcode.writer import ImageWriter
-from log import LibraryError
 from os import remove
-from log import command as com
 
 
 def make(h, w):
     if w > 26:
-        raise LibraryError('책장의 가로의 길이가 너무 깁니다.')
+        return '책장의 가로의 길이가 너무 깁니다.'
     if h > 9:
-        raise LibraryError('책장의 세로의 길이가 너무 깁니다. 가로와 세로를 바꾸어서 입력해 보세요.')
+        return '책장의 세로의 길이가 너무 깁니다.'
     l = []
     for i in range(65, 65 + w):
         for j in range(1, h + 1):
