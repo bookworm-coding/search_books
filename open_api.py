@@ -1,8 +1,6 @@
 import urllib.parse
 import urllib.request
 import json
-import books_csv
-import functions
 
 cert_key = "6efe44b0b9005ffc12d18b193ca79afb3641ecb7f64a1c4145f36ff1656264b8"
 

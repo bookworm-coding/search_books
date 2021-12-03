@@ -3,13 +3,42 @@ from tkinter.messagebox import showinfo
 import books_db
 import functions
 import open_api
+import make_barcode
+from os import system
 root: Tk = None
 window: Tk = None
 entry: Entry = None
 entry2: Entry = None
+button:Button=None
 data1: str=""
 data2: str=""
-
+def reset():
+    global root, window, entry, entry2, data1, data2, button
+    def end():
+        global root, window, entry, entry2, data1, data2, button
+        make_barcode.make(int(entry.get()), int(entry2.get()))
+        showinfo('초기 세팅 완료', '다음 창에 뜨는 이미지를 출력하여 잘라서 책장의 칸마다 붙이세요.')
+        system('print.png')
+        window.destroy()
+    window=Tk()
+    window.title('초기 설정하기')
+    l=Label(window, text="책장의 가로와 세로를 입력하세요", font=('Malgun Gothic', 20, "roman"))
+    l.pack()
+    frame1=Frame(window)
+    frame1.pack()
+    frame2 = Frame(window)
+    frame2.pack()
+    l=Label(frame1, text="가로:", font=('Malgun Gothic', 20, "roman"))
+    l.grid(row=0, column=0)
+    entry=Entry(frame1, font=('Malgun Gothic', 20, "roman"))
+    entry.grid(row=0, column=1)
+    l = Label(frame2, text="세로:", font=('Malgun Gothic', 20, "roman"))
+    l.grid(row=0, column=0)
+    entry2 = Entry(frame2, font=('Malgun Gothic', 20, "roman"))
+    entry2.grid(row=0, column=1)
+    button=Button(window, text="완료", command=end, font=('Malgun Gothic', 20, "roman"))
+    button.pack()
+    window.mainloop()
 def find():
     global window, root, entry, entry2
     window = Tk()
@@ -110,4 +139,6 @@ if __name__ == "__main__":
     a.grid(row=0, column=1)
     a=Button(frame, text="도서 목록 초기화", command=books_db.reset, font=('Malgun Gothic', 20, "roman"))
     a.grid(row=0, column=2)
+    #a=Button(frame, text="초기 설정 하기", command=reset, font=('Malgun Gothic', 20, "roman"))
+    #a.grid(row=0, column=3)
     root.mainloop()
