@@ -58,7 +58,6 @@ def add():
         entry2.grid(row=0, column=1)
         t2 = Label(window, text="위치 코드를 입력하거나 스캔하세요", font=('Malgun Gothic', 20, "roman"))
         t2.grid(row=0, column=0)
-        window.mainloop()
         def next_com_com(*args):
             global window, data1, data2, t, entry
             data2 = entry2.get()
@@ -67,6 +66,7 @@ def add():
             window.destroy()
 
         window.bind("<Return>", next_com_com)
+        window.mainloop()
     window.bind("<Return>", next_com)
     window.mainloop()
 
