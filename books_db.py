@@ -22,6 +22,12 @@ def insert(isbn, place, title):
     conn.commit()
     conn.close()
     return
+def fectory_reset():
+    conn = connect('books.db')
+    c = conn.cursor()
+    c.execute('CREATE TABLE "books" ("isbn" TEXT NOT NULL,"place" TEXT NOT NULL, "title" TEXT NOT NULL)')
+    conn.commit()
+    conn.close()
 def reset():
     if askyesno("도서 목록 초기화", "도서 목록 초기화 하시겠습니까?"):
         showinfo("도서 목록 초기화 완료", "도서 목록 초기화 완료됨")

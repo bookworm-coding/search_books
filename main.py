@@ -5,6 +5,7 @@ import functions
 import open_api
 import make_barcode
 from os import system
+from os.path import exists
 
 root: Tk = None
 window: Tk = None
@@ -133,6 +134,9 @@ if __name__ == "__main__":
         window.destroy()
     except:
         pass
+    if not exists('books.db'):
+        books_db.fectory_reset()
+        reset()
     root = Tk()
     root.title("도서 검색 프로그램")
     a = Label(root, text="도서검색 프로그램 v1.0", font=('Malgun Gothic', 20, "roman"), width=20)

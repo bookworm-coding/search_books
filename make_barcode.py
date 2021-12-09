@@ -18,7 +18,7 @@ def make(h, w):
             remove(chr(i) + str(j) + '.png')
     print(l)
     if len(l) > 144:
-        raise LibraryError('이렇게 많은 칸의 책장을 아직은 지원하지 않습니다. 차후 지원 예정입니다.')
+        raise '이렇게 많은 칸의 책장을 아직은 지원하지 않습니다. 차후 지원 예정입니다.'
     elif len(l) > 12:
         i = 0
         while (i * 12 + 12) <= len(l):
